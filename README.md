@@ -1,5 +1,5 @@
 # ETL JPX Tokyo Stock Exchange
-The goal of this project is to create an Extract, Transform, Load (ETL) pipeline operation on the JPX Tolyo Stock Exchange Dataset which are available at Kaggle [here](https://www.kaggle.com/competitions/jpx-tokyo-stock-exchange-prediction/overview).
+The goal of this project is to create the Extract, Transform, Load (ETL) pipeline process on the JPX Tokyo Stock Exchange Dataset which is available at Kaggle [here](https://www.kaggle.com/competitions/jpx-tokyo-stock-exchange-prediction/overview).
 
 
 -------------------------------------------------------------------------------------------------
@@ -10,7 +10,7 @@ Prerequisites: Installed Python >= 3.8
 From a terminal:
 1. change directory to ETL_JPXTokyoStockExchange: cd ETL_JPXTokyoStockExchange
 2. install libraries: pip install -r requirements.txt
-3. To create the in memory Database, type: python create_database.py
+3. To create the in-memory Database, type: python create_database.py
 4. To Run the pipeline, type: python etl_pipeline.py
 5. To Run the test, type: pytest tests/ --no-header -v > test_output.log
 
@@ -24,10 +24,10 @@ Modeling Assumptions:
 - We assume that every day (or every week etc.) we receive new stock prices datasets (for both primary and secondary stocks).
   The primary and secondary stocks datasets are therefore dynamic data.
 
-- We assume that we receive as well the stock list data every day or so which contains metadata about the stocks. We do not expect a lot of changes on
+- We assume that we receive as well the stock list data every day or so which contains metadata about the stocks. We do not expect a lot of changes in
   those data from date to date. Therefore the stock list data are static in general.
 
-- The stock list data (SecuritiesCode as primary key) has an one-to-many relationship with the stock prices data (SecuritiesCode as foreign key).
+- The stock list data (SecuritiesCode as primary key) has a one-to-many relationship with the stock prices data (SecuritiesCode as foreign key).
 
 - We utilize the ORM model provided by sqlalchemy to implement the aforementioned logic. 
 
@@ -35,9 +35,9 @@ Modeling Assumptions:
 -------------------------------------------------------------------------------------------------
 Data Transformation Assumptions:
 
-- We attempt to save the received data without performing complicated transformation, i.e almost raw data.
+- We attempt to save the received data without performing complicated transformations, i.e almost raw data.
 - More complicated transformation can be applied to an ad-hoc analysis, e.g fill missing values with a specific strategy
-  which takes into account all the past values of a specific stock saved in the database etc.
+  that takes into account all the past values of a specific stock saved in the database, etc.
 
 
 -------------------------------------------------------------------------------------------------
@@ -50,5 +50,5 @@ Datasets Used
 ------------------------------------------------------------------------------------------------- 
 Next Steps
 
- - If we want to automate, schedule, monitor and raising alerts for the pipeline execution we can use a pipeline orchestrator tool like [Prefect](https://docs.prefect.io/latest/).
- - Only minimal changes required.
+ - If we want to automate, schedule, monitor, and raise alerts for the pipeline execution we can use a pipeline orchestrator tool like [Prefect](https://docs.prefect.io/latest/).
+ - Only minimal changes are required.
