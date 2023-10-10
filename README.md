@@ -29,6 +29,8 @@ Modeling Assumptions:
 
 - The stock list data (SecuritiesCode as primary key) has an one-to-many relationship with the stock prices data (SecuritiesCode as foreign key).
 
+- We utilize the ORM model provided by sqlalchemy to implement the aforementioned logic. 
+
 
 -------------------------------------------------------------------------------------------------
 Data Transformation Assumptions:
