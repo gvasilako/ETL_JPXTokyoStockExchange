@@ -126,7 +126,7 @@ def transform(extracted_data: Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]) -
         # add new codes (if any)
         stocks_metadata_new = stocks_metadata[stocks_metadata.SecuritiesCode.isin(new_stock_codes)].copy()
 
-        if len(stocks_metadata) > 0:
+        if len(stocks_metadata_new) > 0:
             logger.info('New Stock codes have arrived')
             stocks_metadata_new['CreatedDateTime'] = time_now
             stocks_metadata_new['UpdatedDateTime'] = time_now
