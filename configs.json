@@ -1,0 +1,10 @@
+{
+  "FILES_PATH": "./Data",
+  "DB": {
+    "server": "localhost:8080",
+    "database": "mlp",
+    "user": "root",
+    "password": "pass"
+  }
+
+}
