@@ -1,5 +1,5 @@
-# ETL_JPXTokyoStockExchange
-The goal of this project is to create an Extract, Transform, Load (ETL) pipeline on the JPX Tolyo Stock Exchange Dataset which are available at Kaggle [here](https://www.kaggle.com/competitions/jpx-tokyo-stock-exchange-prediction/overview).
+# ETL JPX Tokyo Stock Exchange
+The goal of this project is to create an Extract, Transform, Load (ETL) pipeline operation on the JPX Tolyo Stock Exchange Dataset which are available at Kaggle [here](https://www.kaggle.com/competitions/jpx-tokyo-stock-exchange-prediction/overview).
 
 
 -------------------------------------------------------------------------------------------------
