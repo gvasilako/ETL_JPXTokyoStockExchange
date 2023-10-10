@@ -2,7 +2,7 @@
   "FILES_PATH": "./Data",
   "DB": {
     "server": "localhost:8080",
-    "database": "mlp",
+    "database": "mydb",
     "user": "root",
     "password": "pass"
   }
