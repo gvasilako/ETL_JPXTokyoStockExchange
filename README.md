@@ -8,11 +8,11 @@ Steps required to run the code.
 Prerequisites: Installed Python >= 3.8
 
 From a terminal:
-1. change directory to ETL_JPXTokyoStockExchange: cd ETL_JPXTokyoStockExchange
-2. install libraries: pip install -r requirements.txt
-3. To create the in-memory Database, type: python create_database.py
-4. To Run the pipeline, type: python etl_pipeline.py
-5. To Run the test, type: pytest tests/ --no-header -v > test_output.log
+1. change directory to ETL_JPXTokyoStockExchange: `cd ETL_JPXTokyoStockExchange`
+2. install libraries: `pip install -r requirements.txt`
+3. To create the in-memory Database, type: `python create_database.py`
+4. To Run the pipeline, type: `python etl_pipeline.py`
+5. To Run the test, type: `pytest tests/ --no-header -v > test_output.log`
 
 After the execution of the pipeline, a pipeline.log file will be produced which logs the steps of the pipeline. <br/>
 After the execution of the tests, a test_output.log file will be produced which logs the test results.
