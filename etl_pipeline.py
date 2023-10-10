@@ -111,6 +111,28 @@ def transform(extracted_data: Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]) -
     stocks_metadata = preprocess_stock_list(stocks_metadata)
 
     try:
+	# check if new stock codes have arrived today
+        logger.info("Check if new Stocks codes have arrived today")
+
+        # Query database to fetch all existing Stock Codes
+        session = Session()
+        existing_stocks = session.query(StockMetadata.SecuritiesCode).all()
+        stock_codes_existing = [code[0] for code in existing_stocks]
+
+        # Find newly arrived Stock codes
+        stock_codes_today = stocks_metadata['SecuritiesCode'].values.tolist()
+        new_stock_codes = list(set(stock_codes_today) - set(stock_codes_existing))
+
+        # add new codes (if any)
+        stocks_metadata = stocks_metadata[stocks_metadata.SecuritiesCode.isin(new_stock_codes)]
+
+        if len(stocks_metadata) > 0:
+            logger.info('New Stock codes have arrived')
+            stocks_metadata['CreatedDateTime'] = time_now
+            stocks_metadata['UpdatedDateTime'] = time_now
+        else:
+            logger.info('None new Stock codes has arrived')
+	
         # check if there are new stocks in stocks prices but are not present in stocks metadata
         stock_codes_today_from_list = stocks_metadata.SecuritiesCode.values.tolist()
         stocks_codes_today_from_prices = primary_stocks.SecuritiesCode.values.tolist() + secondary_stocks.SecuritiesCode.values.tolist()
@@ -150,28 +172,6 @@ def transform(extracted_data: Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]) -
         time_now = datetime.utcnow()
         all_stock_prices['CreatedDateTime'] = time_now
         all_stock_prices['UpdatedDateTime'] = time_now
-
-        # check if new stock codes have arrived today
-        logger.info("Check if new Stocks codes have arrived today")
-
-        # Query database to fetch all existing Stock Codes
-        session = Session()
-        existing_stocks = session.query(StockMetadata.SecuritiesCode).all()
-        stock_codes_existing = [code[0] for code in existing_stocks]
-
-        # Find newly arrived Stock codes
-        stock_codes_today = stocks_metadata['SecuritiesCode'].values.tolist()
-        new_stock_codes = list(set(stock_codes_today) - set(stock_codes_existing))
-
-        # add new codes (if any)
-        stocks_metadata = stocks_metadata[stocks_metadata.SecuritiesCode.isin(new_stock_codes)]
-
-        if len(stocks_metadata) > 0:
-            logger.info('New Stock codes have arrived')
-            stocks_metadata['CreatedDateTime'] = time_now
-            stocks_metadata['UpdatedDateTime'] = time_now
-        else:
-            logger.info('None new Stock codes has arrived')
 
     except Exception as excp:
         logger.error(f'Transformation of Stocks data failed. Error: {excp}')
