@@ -1,5 +1,5 @@
 # ETL_JPXTokyoStockExchange
-The goal of this project is to create an Extract, Transform, Load (ETL) pipeline on the JPX Tolyo Stock Exchange Dataset which are available at [Kaggle](https://www.kaggle.com/competitions/jpx-tokyo-stock-exchange-prediction/overview)
+The goal of this project is to create an Extract, Transform, Load (ETL) pipeline on the JPX Tolyo Stock Exchange Dataset which are available at Kaggle [here](https://www.kaggle.com/competitions/jpx-tokyo-stock-exchange-prediction/overview).
 
 
 -------------------------------------------------------------------------------------------------
@@ -17,6 +17,7 @@ From a terminal:
 After the execution of the pipeline, a pipeline.log file will be produced which logs the steps of the pipeline.
 After the execution of the tests, a test_output.log file will be produced which logs the test results.
 
+
 -------------------------------------------------------------------------------------------------
 Modeling Assumptions:
 
@@ -28,6 +29,7 @@ Modeling Assumptions:
 
 - The stock list data (SecuritiesCode as primary key) has an one-to-many relationship with the stock prices data (SecuritiesCode as foreign key)
 
+
 -------------------------------------------------------------------------------------------------
 Data Transformation Assumptions:
 
@@ -35,15 +37,15 @@ Data Transformation Assumptions:
 - More complicated transformation can be applied to an ad-hoc analysis, e.g fill missing values with a specific strategy
   which takes into account all the past values of a specific stock saved in the database etc.
 
+
 -------------------------------------------------------------------------------------------------
 Datasets Used
  - example_test_files/stock_prices.csv
  - example_test_files/secondary_stock_prices.csv
  - stock_list.csv
+
  
- 
- 
-======================================================================================================================
+------------------------------------------------------------------------------------------------- 
 Next Steps
 
  - If we want to automate, schedule, monitor and raising alerts for the pipeline execution we can use a pipeline orchestrator tool like Prefect: https://docs.prefect.io/latest/
